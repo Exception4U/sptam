@@ -1,0 +1,86 @@
+[0m[ INFO] [1450194019.471944093]: S-PTAM node running...[0m
+detector: GFTT
+  minDistance: 10
+  nfeatures: 2000
+  qualityLevel: 0.01
+  useHarrisDetector: 0
+extractor: BRIEF
+  bytes: 32
+matcher: BruteForce-Hamming
+  crossCheck: 0
+[0m[ INFO] [1450194019.760451404]: sptam node initialized[0m
+-- -- -- WAIT QUEUE - -- --
+... logging to /home/swahana/.ros/log/2520d18a-a342-11e5-a98d-989096d5c7a1/roslaunch-swahana-Precision-T1700-27321.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/swahana/indigo_ws/src/sptam/launch/husky.launch
+[1mstarted roslaunch server http://swahana-Precision-T1700:60386/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /left_decimator/height: 720
+ * /left_decimator/width: 1280
+ * /left_decimator/x_offset: 1
+ * /left_decimator/y_offset: 1
+ * /right_decimator/height: 720
+ * /right_decimator/width: 1280
+ * /right_decimator/x_offset: 1
+ * /right_decimator/y_offset: 1
+ * /rosdistro: indigo
+ * /rosversion: 1.11.16
+ * /sptam/DescriptorExtractor/Name: BRIEF
+ * /sptam/DescriptorExtractor/bytes: 32
+ * /sptam/DescriptorMatcher/Name: BruteForce-Hamming
+ * /sptam/DescriptorMatcher/crossCheck: False
+ * /sptam/EpipolarDistance: 2
+ * /sptam/FeatureDetector/Name: GFTT
+ * /sptam/FeatureDetector/minDistance: 10.0
+ * /sptam/FeatureDetector/nfeatures: 2000
+ * /sptam/FeatureDetector/qualityLevel: 0.01
+ * /sptam/FeatureDetector/useHarrisDetector: False
+ * /sptam/FramesBetweenKeyFrames: 0
+ * /sptam/FrustumFarPlaneDist: 1000.0
+ * /sptam/FrustumNearPlaneDist: 0.01
+ * /sptam/KeyFrameDistance: 0
+ * /sptam/MatchingCellSize: 15
+ * /sptam/MatchingDistance: 25
+ * /sptam/MatchingNeighborhood: 1
+ * /sptam/approximate_sync: False
+ * /sptam/camera_frame: /left_camera
+ * /use_sim_time: True
+
+NODES
+  /stereo/
+    stereo_image_proc (stereo_image_proc/stereo_image_proc)
+  /
+    camera_broadcaster (tf/static_transform_publisher)
+    left_decimator (nodelet/nodelet)
+    right_decimator (nodelet/nodelet)
+    sptam (sptam/sptam_node)
+    sptam_path (ros_utils/pose_to_path)
+
+auto-starting new master
+[1mprocess[master]: started with pid [27333][0m
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/home/swahana/indigo_ws/src/sptam/launch/husky.launch http://localhost:11311
+[1msetting /run_id to 2520d18a-a342-11e5-a98d-989096d5c7a1[0m
+[1mprocess[rosout-1]: started with pid [27346][0m
+started core service [/rosout]
+[1mprocess[stereo/stereo_image_proc-2]: started with pid [27359][0m
+[1mprocess[left_decimator-3]: started with pid [27369][0m
+[1mprocess[right_decimator-4]: started with pid [27372][0m
+[1mprocess[camera_broadcaster-5]: started with pid [27373][0m
+[1mprocess[sptam-7]: started with pid [27374][0m
+[sptam-7] killing on exit
+[camera_broadcaster-5] killing on exit
+[right_decimator-4] killing on exit
+[left_decimator-3] killing on exit
+[stereo/stereo_image_proc-2] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

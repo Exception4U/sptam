@@ -1,0 +1,16 @@
+<launch>
+
+  <node pkg="rosbag" type="rosbag" name="rosbag" args="play -d 2 /home/swahana/zed_car.bag"/>
+
+  <node name="extract" pkg="image_view" type="extract_images" respawn="false" output="screen" cwd="node">
+
+    <remap from="image" to="/zed/stereo/left/image_rect"/>
+    <param name="filename_format" value="i.jpg"/>
+  </node>
+  <node name="extract2" pkg="image_view" type="extract_images" respawn="false" output="screen" cwd="node">
+
+    <remap from="image" to="/zed/stereo/left/image_rect"/>
+    <param name="filename_format" value="i.jpg"/>
+  </node>
+
+</launch>
