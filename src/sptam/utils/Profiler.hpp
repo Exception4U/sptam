@@ -101,5 +101,8 @@ inline void WriteToLog(const std::string msg, const size_t currentFrameIndex, co
 
   Logger::Write( message.str() );
 }
-
+inline void WriteToLog(std::stringstream message )
+{
+    Logger::Write( message.str() );
+}
 #endif // PROFILER_HPP_
