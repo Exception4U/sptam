@@ -130,11 +130,10 @@ CameraPose SPTAM::track(
     //tk stands for tracker
     std::map<MapPoint*, Measurement> measurementsRightOnly = frame->GetMeasurementsRightOnly();
     WriteToLog( " tk matched_points_stereo: ", measurementsStereo.size() );
-
-      std::ostream message;
-      for ( auto m : measurementsLeftOnly ) {
-          MapPoint* a= m.first;
-            message << a;
+       for ( auto m : measurementsLeftOnly ) {
+          MapPoint* a = m.first ;
+	  cv::Point2d* pt = m[a] ;  
+          WriteToLog( " 3D points ", a->GetPosition() ,"2d points", pt );
       }
     //WriteToLog(message);
 
