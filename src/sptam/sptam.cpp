@@ -133,7 +133,7 @@ CameraPose SPTAM::track(
        for ( auto m : measurementsLeftOnly ) {
           MapPoint* a = m.first ;
 	  cv::Point2d* pt = m[a] ;  
-          WriteToLog( " 3D points ", a->GetPosition() ,"2d points", pt );
+          WriteToLog( " 3D_points ", a->GetPosition() ,"2d_points", pt );
       }
     //WriteToLog(message);
 
