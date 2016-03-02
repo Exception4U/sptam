@@ -101,5 +101,11 @@ inline void WriteToLog(const std::string msg, const size_t currentFrameIndex, co
 
   Logger::Write( message.str() );
 }
-
+inline void WriteToLog(const std::string msg, const cv::Point3d& position, const std::string msg2 ,const cv::Point2d& pt)
+{
+  std::stringstream message;
+  message << msg << " " << position.x << " " << position.y << " " << position.z <<
+  " " << pt.x << " " << pt.y << std::endl ;  
+  Logger::Write( message.str() );
+}
 #endif // PROFILER_HPP_

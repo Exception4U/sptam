@@ -31,6 +31,7 @@
 #include "KeyFramePolicy.hpp"
 #include "FeatureExtractorThread.hpp"
 
+
 #ifdef SHOW_TRACKED_FRAMES
 
   #include "utils/Draw.hpp"
@@ -69,6 +70,7 @@ CameraPose SPTAM::track(
   const ImageFeatures& imageFeaturesLeft, const ImageFeatures& imageFeaturesRight,
   const cv::Mat &imageLeft, const cv::Mat &imageRight)
 {
+    //stereoFrame instance created
   StereoFrame::UniquePtr frame( new StereoFrame(
     estimatedCameraPose, cameraParametersLeft_,
     stereo_baseline_, cameraParametersRight_,
@@ -116,7 +118,7 @@ CameraPose SPTAM::track(
   std::map<MapPoint*, std::pair<Measurement, Measurement> > measurementsStereo;
   measurementsStereo = frame->GetMeasurementsStereo();
   measurementsLeftOnly = frame->GetMeasurementsLeftOnly();
-//  measurementsRightOnly = frame->GetMeasurementsRightOnly(); // las mediciones derechas no estan andando bien
+//  measurementsRightOnly = frame->GetMeasurementsRightOnly(); // the right measurements are not going well
 
   // The tracker will try to refine the new camera pose
   // from the computed measurements
@@ -125,8 +127,16 @@ CameraPose SPTAM::track(
   );
 
   #ifdef SHOW_PROFILING
+    //tk stands for tracker
     std::map<MapPoint*, Measurement> measurementsRightOnly = frame->GetMeasurementsRightOnly();
     WriteToLog( " tk matched_points_stereo: ", measurementsStereo.size() );
+       for ( auto m : measurementsLeftOnly ) {
+          MapPoint* a = m.first ;
+	  cv::Point2d* pt = m[a] ;  
+          WriteToLog( " 3D_points ", a->GetPosition() ,"2d_points", pt );
+      }
+    //WriteToLog(message);
+
     WriteToLog( " tk matched_points_only_left: ", measurementsLeftOnly.size() );
     WriteToLog( " tk matched_points_only_right: ", measurementsRightOnly.size() );
   #endif
@@ -328,7 +338,6 @@ void SPTAM::matchToPoints(const StereoFrame& frame, const std::vector<MapPoint*>
   measurementsRight.reserve( measRight.size() );
 
   for ( auto meas : measLeft ) {
-
     // Update the descriptor of the MapPoint with the left image descriptor only
     // aca haria falta pedir el lock
     mapPoints[ meas.index ]->SetDescriptor( meas.descriptor );
