@@ -129,6 +129,9 @@ CameraPose SPTAM::track(
   #ifdef SHOW_PROFILING
     //tk stands for tracker
     std::map<MapPoint*, Measurement> measurementsRightOnly = frame->GetMeasurementsRightOnly();
+    
+    //This code is added by me to trace 3d points and its 2d corrosponding point in current frame
+    //Along with that I print id of each 3d point but it is not uniques throughout for whole map 
     WriteToLog( " tk matched_points_stereo: ", measurementsStereo.size() );
        for ( auto m : measurementsLeftOnly ) {
           MapPoint* a = m.first ;
@@ -136,6 +139,7 @@ CameraPose SPTAM::track(
 	  id = a->GetId();
           WriteToLog( " 3D_points ", a->GetPosition() ,"2d_points", pt );
       }
+     //////////////////////////////////////////////////////// 
     //WriteToLog(message);
 
     WriteToLog( " tk matched_points_only_left: ", measurementsLeftOnly.size() );
