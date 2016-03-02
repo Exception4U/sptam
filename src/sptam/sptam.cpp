@@ -132,7 +132,8 @@ CameraPose SPTAM::track(
     WriteToLog( " tk matched_points_stereo: ", measurementsStereo.size() );
        for ( auto m : measurementsLeftOnly ) {
           MapPoint* a = m.first ;
-	  cv::Point2d* pt = m[a] ;  
+	  cv::Point2d* pt = m[a] ;
+	  id = a->GetId();
           WriteToLog( " 3D_points ", a->GetPosition() ,"2d_points", pt );
       }
     //WriteToLog(message);
